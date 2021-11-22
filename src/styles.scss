@@ -1,1 +1,168 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #777;
+    padding: 30px;
+}
+
+.header{
+    height: 95vh;
+    position: relative;
+    background-image:                                    // תמונת רקע ראשונה
+    linear-gradient(to bottom, rgba(126,213,111,0.8), rgba(40,180,131,0.8)),
+    url(./assets/hero.jpg);
+
+    background-size: cover;                              // למתוח את התמונה שתיהיה על כל המסך
+    background-position: top ;                           // משאיר את הלמעלה של התמונה שתמיד ישאר וגם אם מקטינים אותה
+        // שמאל למטה, ימין למטה, ימין למעלה, שמאל למעלה 
+    clip-path: polygon(0 0 ,100% 0, 100% 75vh , 0 100%);             // חותך את התמונמה מלמטה
+}
+.logo-box{
+    position: absolute;
+    top: 40px;    // מיקום של הלוגו
+    left: 40px;
+}
+.logo {
+    height: 35px;  // גודל של הלוגו
+    // animation-name: moveInLeft;
+    // animation-duration: 1s;
+    // animation-iteration-count: 4;
+    
+}
+
+.text-box{                                     //  שהכותרת תיהיה בדיוק באמצע
+    position: absolute;
+    top: 40%;           // מיקום של הקטסט איפה היהיה 
+    left: 50%;
+    transform: translate(-50%,-50%);          // זה מתייחס לסטייל של הכותרת עצמה
+    text-align: center;                       // מיישר את הטקסט לאמצע (חשוב מאוד בשביל הטקסט של הכפתור שמתחת שזה מיישר את הטקסט)
+}
+
+.heading-primary{
+    color: white;
+    text-transform: uppercase;               // שיהיו אותיות גדולות
+    backface-visibility: hidden;            // בשביל האנימציה למטה שלא יהיה רעד כשמסתיים האנימציה
+    padding-bottom: 60px;
+}
+
+.heading-primary-main{
+    display: block;
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+    animation-name: moveInLeft;                                 // קריאה לפונקציה למטה
+    animation-duration: 1s;                                        // המהירות שיעבוד
+    // animation-delay: 3s; // שיחכה כמה שניות עד שיתחיל
+    // animation-iteration-count: 3;  //כמות הפעמים שיעבוד
+
+}
+
+.heading-primary-sub{
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 17.5px;
+    animation-name: moveInRight;
+    animation-duration: 1s;
+    
+}
+
+@keyframes moveInLeft {                              // @keyframes = פלטפורמה לעשיית אנימציות
+    0%{
+        opacity: 0;                                     // opacity = אטימות שווה ל 0 הכוונה שלא יראו אותו בכלל
+        transform:translateX(-100px) ;               // שיתחיל משמאל לימין 
+    }
+    80%{
+        transform: translateX(20px);                   // כשמגיע ל 80 אחוז שימשיך עוד 10 פיקסל
+    }
+    100%{
+        opacity: 1;
+        transform:translateX(0) ;                                       // שיגיע למקום הקובע ויעצור שם
+    }
+
+}
+
+@keyframes moveInRight {                                  // @keyframes = פלטפורמה לעשיית אנימציות
+    0%{
+        opacity: 0;                                       // opacity = אטימות שווה ל 0 הכוונה שלא יראו אותו בכלל
+        transform:translateX(200px) ;                    // שיתחיל משמאל לימין 
+    }
+    80%{
+      transform: translateX(-10px);  // כשמגיע ל 80 אחוז שימשיך עוד 10 פיקסל
+    }
+    100%{
+        opacity: 1;
+        transform:translate(0) ;                                       // שיגיע למקום הקובע ויעצור שם
+    }
+
+}
+
+
+@keyframes moveInBotton {                                  // @keyframes = פלטפורמה לעשיית אנימציות
+    0%{
+        opacity: 0;                                       // opacity = אטימות שווה ל 0 הכוונה שלא יראו אותו בכלל
+        transform:translateY(30px) ;                    // שיתחיל משמאל לימין 
+    }
+   
+    100%{
+        opacity: 1;
+        transform:translate(0) ;                                       // שיגיע למקום הקובע ויעצור שם
+    }
+
+}
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;                             // שלא יהיה קו תחתון מתחת לכיתוב
+    padding: 15px 40px;                             // 15px=  ללמעלה ולמטה,   
+    display: inline-block;    // חשוב לעשות אותו כבלוק בשביל שנוכל לעשות עליו דברים כמו כאן שמעלים אותו קצת למעלה בלחיצה
+    border-radius: 100px;                              // לעגל את הפינות של הכפתור
+    transition: all .2s;     // מַעֲבָר    - שיהיה על הכל ורק 2 שניות
+    position: relative; // זה בשביל האפקט שיש אחרי שנוגים בכפתור
+}
+
+.btn:hover{
+    transform: translateY(-3px);                            // באובר שהכפתור יעלה למעלה  קצת
+    box-shadow: 0 10px 20px rgba(0, 0,0,.2);  // לעשות צל
+}
+
+.btn:active{
+    transform: translateY(-1px);                                   // בלחיצה שהכפתור יעלה למעלה קצת
+    box-shadow: 0 5px 10px rgba(0, 0,0,.2);
+}
+
+.btn-white{
+    background-color: #fff;
+    color: #777;
+}
+
+.btn:after{
+    content: "";    // חובה לעשות אותו כבלוק בשביל שנוכל לעשות עליו דברים כמו כאן שמעלים אותו קצת למעלה בלחיצה
+    display: inline-block;    // חובה לעשות אותו כבלוק בשביל שנוכל לעשות עליו דברים כמו כאן שמעלים אותו קצת למעלה בלחיצה
+height: 100%;       // כל אלה זה אומר שזה 100 אחוז הכוונה שיהיה בדיוק כמו שכתוב עליו בקלאס למלעה המקורי ושלא יהיה שינוי
+width: 100%;
+border-radius: 100px;
+position: absolute;
+top: 0;
+left: 0;
+z-index: -1;
+transition: all .4s;      // מַעֲבָר    - שיהיה על הכל ורק 2 שניות
+}
+
+.btn-white:after {
+    background-color: #fff;
+}
+
+.btn-white:hover:after{
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;          // אטימות
+}
+
+.btn-animated{
+    //         אחרי כמה זמן יתחיל,   מהר או לאט,    כמה זמן    
+    animation: moveInBotton  .5s ease-out .75s;
+    animation-fill-mode: backwards;   // עושה שלא יראו את הכפתור עד שהאנימציה לא תעבוד
+}
